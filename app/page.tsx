@@ -232,8 +232,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center">
-      <div className="w-full max-w-5xl px-4 py-8">
+    <div className="min-h-screen bg-white flex flex-col items-center" style={{ maxWidth: '850px', margin: '0 auto' }}>
+      <div className="w-full px-4 py-8">
         {/* Header */}
         <header className="text-center py-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
@@ -243,18 +243,23 @@ export default function Home() {
 
         {/* Movie Style Selection - Infinite Carousel */}
         <section className="mb-8">
-          <div className="relative w-full overflow-hidden">
+          <div className="relative w-full overflow-hidden flex justify-center">
             <div 
               ref={carouselRef}
-              className="flex items-center overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 justify-start"
+              className="flex items-center overflow-x-auto snap-x snap-mandatory scrollbar-hide justify-start"
+              style={{ 
+                maxWidth: '850px',
+                width: '100%'
+              }}
             >
-              {/* Left padding for centering */}
-              <div className="flex-shrink-0" style={{ width: 'calc(50vw - 115px)' }} />
+              {/* Left padding for centering - (850 - 230) / 2 = 310px */}
+              <div className="flex-shrink-0" style={{ width: '310px' }} />
               
               {infiniteStyles.map((style, index) => (
                 <div 
                   key={`${style.id}-${index}`}
                   className="snap-center flex items-center flex-shrink-0"
+                  style={{ marginRight: '32px' }}
                 >
                   <MovieStyleCard
                     style={style}
@@ -265,7 +270,7 @@ export default function Home() {
               ))}
               
               {/* Right padding for centering */}
-              <div className="flex-shrink-0" style={{ width: 'calc(50vw - 115px)' }} />
+              <div className="flex-shrink-0" style={{ width: '310px' }} />
             </div>
           </div>
           
