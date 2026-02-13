@@ -45,8 +45,8 @@ export async function POST(request: NextRequest) {
       "3": {
         "inputs": {
           "seed": Math.floor(Math.random() * 1000000000),
-          "steps": 20,
-          "cfg": 7,
+          "steps": 30,
+          "cfg": 8,
           "sampler_name": "euler",
           "scheduler": "normal",
           "denoise": 1,
