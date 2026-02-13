@@ -12,7 +12,14 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch(imageUrl);
+      // Use server-side proxy to avoid CORS issues
+      const downloadUrl = `/api/download?url=${encodeURIComponent(imageUrl)}`;
+      
+      const response = await fetch(downloadUrl);
+      if (!response.ok) {
+        throw new Error('Download failed');
+      }
+      
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -24,7 +31,7 @@ export default function ImageDisplay({ imageUrl }: ImageDisplayProps) {
       document.body.removeChild(a);
     } catch (error) {
       console.error('Download failed:', error);
-      alert('다운로드에 실패했습니다.');
+      alert('다운로드에 실패했습니다. 다시 시도해주세요.');
     }
   };
 

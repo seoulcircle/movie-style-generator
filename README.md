@@ -26,12 +26,36 @@ ComfyUI와 Stable Diffusion을 활용하여 영화의 시각적 스타일을 재
 - **Harry Potter (해리포터)** - 마법 같은 분위기의 어두운 아카데미아 스타일
 - **Grand Budapest Hotel (그랜드 부다페스트 호텔)** - 대칭적이고 화려한 컬러
 
+### 🔧 기술적 특징
 
-### 🚀 최적화된 성능
-- Next.js 16 + Turbopack
-- 실시간 이미지 생성 상태 추적
-- 자동 이미지 다운로드 기능
-- 에러 핸들링 및 재시도 로직
+#### 🌐 실시간 진행 상황 추적 (WebSocket)
+- ComfyUI WebSocket 연결을 통한 실시간 이미지 생성 진행률 표시
+- 자동 재연결 및 폴백 메커니즘
+- 단계별 진행 상황 시각화 (노드 실행, 프롬프트 큐잉 등)
+- WebSocket 실패 시에도 정상 작동 보장
+
+#### 📥 이미지 다운로드
+- 서버 사이드 프록시를 통한 CORS 문제 해결
+- 원본 품질 유지 다운로드
+- 자동 파일명 생성 (타임스탬프 기반)
+
+#### 🎡 무한 스크롤 캐러셀
+- 가상화된 무한 스크롤 구현으로 메모리 최적화
+- 부드러운 스냅 스크롤 UX
+- 선택된 카드 중앙 정렬
+- 가시성 최적화 (보이는 카드만 렌더링)
+
+#### ⚡ 성능 최적화
+- Next.js 16 + Turbopack으로 빠른 개발 경험
+- Image 컴포넌트를 활용한 자동 이미지 최적화
+- 클라이언트 사이드 상태 관리 최적화
+- 에러 바운더리 및 재시도 로직
+
+#### 🎯 사용자 경험
+- 반응형 디자인 (모바일/데스크톱 대응)
+- 로딩 상태 피드백
+- 에러 메시지 및 사용자 가이드
+- 직관적인 인터페이스
 
 ## 📋 시스템 요구사항
 
@@ -100,18 +124,21 @@ npm run dev
 movie-style-generator/
 ├── app/
 │   ├── api/
-│   │   └── generate/
-│   │       └── route.ts          # ComfyUI API 통합
+│   │   ├── generate/
+│   │   │   └── route.ts          # ComfyUI API 통합 & 이미지 생성
+│   │   └── download/
+│   │       └── route.ts          # 이미지 다운로드 프록시
 │   ├── globals.css               # 글로벌 스타일
 │   ├── layout.tsx                # 레이아웃 컴포넌트
-│   └── page.tsx                  # 메인 페이지
+│   └── page.tsx                  # 메인 페이지 (무한 캐러셀)
 ├── components/
-│   ├── ImageDisplay.tsx          # 이미지 표시 컴포넌트
+│   ├── ImageDisplay.tsx          # 이미지 표시 & 다운로드
 │   ├── LoadingSpinner.tsx        # 로딩 애니메이션
-│   ├── MovieStyleCard.tsx        # 스타일 카드
-│   └── ProgressBar.tsx           # 진행률 표시
+│   ├── MovieStyleCard.tsx        # 영화 스타일 카드
+│   ├── ProgressBar.tsx           # WebSocket 진행률 표시
+│   └── DetailedLoadingStatus.tsx # 상세 로딩 상태
 ├── hooks/
-│   └── useComfyUI.ts             # ComfyUI WebSocket 훅
+│   └── useComfyUI.ts             # ComfyUI WebSocket 연결 훅
 ├── constants/
 │   └── movieStyles.ts            # 영화 스타일 정의
 ├── types/
@@ -121,10 +148,24 @@ movie-style-generator/
 
 ## 🎨 기술 스택
 
-- **Frontend**: Next.js 16, React 19, TypeScript
+### Frontend
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **UI Library**: React 19
+- **Language**: TypeScript 5
 - **Styling**: Tailwind CSS 4.0
-- **AI Backend**: ComfyUI, Stable Diffusion
-- **Real-time**: WebSocket (선택적)
+- **Image Optimization**: Next.js Image Component
+
+### Backend & AI
+- **AI Engine**: ComfyUI + Stable Diffusion
+- **API**: Next.js API Routes (Route Handlers)
+- **Real-time Communication**: WebSocket
+- **Image Processing**: Server-side Proxy
+
+### Architecture
+- **상태 관리**: React Hooks (useState, useEffect, useRef)
+- **실시간 통신**: WebSocket (ComfyUI 서버)
+- **API 구조**: RESTful API + WebSocket
+- **렌더링**: Client-side Rendering (CSR)
 
 ## ⚙️ 설정
 
@@ -179,4 +220,4 @@ MIT License
 
 ---
 
-ㄴ
+*Made with ❤️ using Next.js & ComfyUI*
