@@ -6,18 +6,16 @@ ComfyUI와 Stable Diffusion을 활용한 AI 이미지 생성 웹 애플리케이
 ![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
+> ⚠️ **로컬 전용 애플리케이션**  
+> 이 프로젝트는 로컬 환경에서만 사용 가능합니다. ComfyUI가 localhost:8188에서 실행되어야 하며, 인터넷에 배포할 수 없습니다.
+
 ## ✨ 주요 기능
 
 ### 🎨 3가지 영화 스타일
 - **Her (그녀)** - 따뜻하고 감성적인 파스텔 톤
-- **Blade Runner (블레이드 러너)** - 사이버펑크 네온 스타일
+- **Harry Potter (해리포터)** - 마법 같은 분위기의 어두운 아카데미아 스타일
 - **Grand Budapest Hotel (그랜드 부다페스트 호텔)** - 대칭적이고 화려한 컬러
 
-### 💫 현대적인 UI/UX
-- Toss Impact 디자인 시스템 영감
-- 부드러운 애니메이션과 그라데이션
-- 반응형 디자인 (모바일, 태블릿, 데스크톱)
-- 실시간 진행 상황 표시 (WebSocket 지원)
 
 ### 🚀 최적화된 성능
 - Next.js 16 + Turbopack
@@ -89,10 +87,10 @@ npm run dev
 - "카페에서 노트북 하는 남자"
 - "도시의 석양"
 
-**Blade Runner 스타일:**
-- "비 내리는 거리"
-- "네온사인 건물"
-- "미래 도시의 밤"
+**Harry Potter 스타일:**
+- "촛불이 켜진 도서관"
+- "학생들이 있는 식당"
+- "어두운 복도를 걷는 사람"
 
 **Grand Budapest Hotel 스타일:**
 - "호텔 로비"
