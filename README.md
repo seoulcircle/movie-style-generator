@@ -2,13 +2,19 @@
 
 > 🎨 영화의 미학을 담은 생성형 AI 이미지 생성 플랫폼
 
-### ComfyUI와 Stable Diffusion을 활용하여 영화의 시각적 스타일을 재현하는 AI 이미지 생성 웹 애플리케이션입니다. 
+ComfyUI와 Stable Diffusion을 활용하여 영화의 시각적 스타일을 재현하는 AI 이미지 생성 웹 애플리케이션입니다. 
 사용자가 입력한 텍스트 프롬프트를 Her, Harry Potter, Grand Budapest Hotel 등 유명 영화의 독특한 색감과 분위기로 변환하여 
 고품질 이미지를 생성합니다.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+## 🎥 데모
+
+**[📹 데모 영상 보기](https://drive.google.com/file/d/1DFUrhYPgxG_pou8pYlutErt3WBCdh3xW/view)** *(2배속)*
+
+실제 작동 화면과 이미지 생성 과정을 확인하세요.
 
 > ⚠️ **로컬 전용 애플리케이션**  
 > 이 프로젝트는 로컬 환경에서만 사용 가능합니다. ComfyUI가 localhost:8188에서 실행되어야 하며, 인터넷에 배포할 수 없습니다.
